@@ -10,4 +10,22 @@ var isValidBST = function(root, min = null, max = null) {
   }
 
   return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
+
+  //ITERATIVE
+  // let stack = [];
+
+  // while (root || stack.length !== 0) {
+  //     while (root) {
+  //         stack.push(root);
+  //         root = root.left;
+  //     }
+  //     root = stack.pop();
+  //     if (pre !== null && root.val <= pre.val) {
+  //         return false;
+  //     }
+
+  //     pre = root;
+  //     root = root.right;
+  // }
+  // return true;
 }
