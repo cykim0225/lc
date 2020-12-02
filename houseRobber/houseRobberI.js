@@ -33,3 +33,18 @@ var rob = function (nums) {
 
   return recurse(nums, nums.length - 1);
 }
+
+//iterative + memo
+var rob = function (nums) {
+  let memo = [];
+
+  memo[0] = 0;
+  memo[1] = nums[0];
+
+  for (let i = 1; i < nums.length; i++) {
+    let val = nums[i];
+    memo[i + 1] = Math.max(memo[i], val + memo[i - 1]);
+  }
+}
+
+}
