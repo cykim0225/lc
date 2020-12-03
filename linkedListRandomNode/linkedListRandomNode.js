@@ -19,23 +19,39 @@ var Solution = function(head) {
 * @return {number}
 */
 Solution.prototype.getRandom = function() {
-  let length = 0;
+  // let length = 0;
+  // let node = this.head;
+  // let node2 = this.head;
+  // while (node) {
+  //     node = node.next;
+  //     length++;
+  // }
+
+  // let index = Math.floor(Math.random() * length);
+  // while (node2) {
+  //     if (index === 0) {
+  //         return node2.val;
+  //     }
+
+  //     node2 = node2.next;
+  //     index--;
+  // }
+
+  // Reservoir Sampling
   let node = this.head;
-  let node2 = this.head;
+  let candidate = node.val;
+  let count = 0;
+
   while (node) {
-      node = node.next;
-      length++;
+    if (Math.floor(Math.random() * (count + 1)) === count) {
+      candidate = node.val;
+    }
+
+    node = node.next;
+    count++;
   }
 
-  let index = Math.floor(Math.random() * length);
-  while (node2) {
-      if (index === 0) {
-          return node2.val;
-      }
-
-      node2 = node2.next;
-      index--;
-  }
+  return candidate;
 };
 
 /**
