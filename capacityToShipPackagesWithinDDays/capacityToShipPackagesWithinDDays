@@ -1,0 +1,35 @@
+/**
+ * @param {number[]} weights
+ * @param {number} D
+ * @return {number}
+ */
+var shipWithinDays = function(weights, D) {
+    let left = 0;
+    let right = 0;
+
+    for (let weight of weights) {
+        left = Math.max(left, weight);
+        right += weight;
+    }
+
+    while (left < right) {
+        let mid = Math.floor((right - left) / 2) + left;
+        let current = 0;
+        let days = 1;
+
+        for (let weight of weights) {
+            if (current + weight > mid) {
+                current = 0;
+                days++;
+            }
+            current += weight;
+        }
+        if (days > D) {
+            left = mid + 1;
+        } else {
+            right = mid;
+        }
+    }
+
+    return left;
+};
