@@ -16,3 +16,18 @@ var groupAnagrams = function(strs) {
 
   return Object.values(ana);
 };
+
+/**
+ * @param {string[]} strs
+ * @return {string[][]}
+ */
+var groupAnagrams = function(strs) {
+  let ana = {};
+
+  for (let str of strs) {
+      let sorted = [...str].sort();
+      ana[sorted] = ana[sorted] ? [...ana[sorted], str] : [str];
+  }
+
+  return Object.values(ana);
+};
