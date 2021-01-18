@@ -21,3 +21,24 @@ var maxProduct = function(nums) {
 
   return res;
 };
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxProduct = function(nums) {
+  let max = nums[0];
+  let min = nums[0];
+  let res = max;
+
+  for (let i = 1; i < nums.length; i++) {
+      let curr = nums[i];
+      let tempMax = Math.max(curr, Math.max(max * curr, min * curr));
+      min = Math.min(curr, Math.min(max * curr, min * curr));
+      max = tempMax;
+
+
+      res = Math.max(res, max);
+  }
+  return res;
+};
