@@ -33,3 +33,5 @@ var numDecodings = function(s) {
 
 // 0 2 2 9
 // 1 1 2 2
+
+//iteration: 2
